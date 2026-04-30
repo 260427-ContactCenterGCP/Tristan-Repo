@@ -13,13 +13,13 @@ client = SpeechClient(
 )
 
 # Add your audio file here! Test with Sandshrew.wav if you want. Keep your audio short (<30s)
-with open("resources/Sandshrew.wav", "rb") as f:
+with open("resources/audio.wav", "rb") as f:
     audio_content = f.read()
 
 config = cloud_speech.RecognitionConfig(
     auto_decoding_config=cloud_speech.AutoDetectDecodingConfig(),
     language_codes=["en-US"],
-    model="short",
+    model="long",
 )
 
 request = cloud_speech.RecognizeRequest(
@@ -32,4 +32,21 @@ request = cloud_speech.RecognizeRequest(
 response = client.recognize(request=request)
 
 for result in response.results:
-    print(f"Transcript: {result.alternatives[0].transcript}")
+    print(f"Transcript 1: {result.alternatives[0].transcript}")
+    print(f"Confidence 1: {result.alternatives[0].confidence:.2%}")
+
+with open("resources/backgroundvoice.wav", "rb") as f:
+    audio_content = f.read()
+
+request = cloud_speech.RecognizeRequest(
+    recognizer=f"projects/{PROJECT_ID}/locations/{LOCATION}/recognizers/_",
+    config=config,
+    content=audio_content,
+)
+
+# Transcribes the audio into text
+response = client.recognize(request=request)
+
+for result in response.results:
+    print(f"Transcript 2: {result.alternatives[0].transcript}")
+    print(f"Confidence 2: {result.alternatives[0].confidence:.2%}")

@@ -1,4 +1,47 @@
-<speak>123 Street Ln, Small Town, IL 12345 USA
-<break time='2s'/>1 Jenny St &amp; Number St, Tutone City, CA 86753
-<break time='2s'/>1 Piazza del Fibonacci, 12358 Pisa, Italy
-<break time='2s'/></speak>
+<speak>
+  <p>Make a bear character in D and D 3.5.</p>
+  <p>DM laughs.</p>
+
+  <p>Make bear a rogue. Put every point I can into disguise.</p>
+  <p>Prestige class as a spy to get more disguise.</p>
+
+  <p>DM says I can't speak English.</p>
+  <p>Max out bluff.</p>
+
+  <p>By growling and gesturing, I can fake speaking a language I don't speak. English.</p>
+
+  <p>Use money to hire a butler NPC.</p>
+  <p>Give him magical item to let him speak bear.</p>
+
+  <p>
+    <prosody rate="x-slow" pitch="-1st" volume="x-loud"><phoneme alphabet="ipa" ph="ɡɹaʊːːːl">GROWWWWWL</phoneme></prosody>
+  </p>
+
+  <prosody rate="85%" pitch="+2st" volume="loud">
+    <emphasis level="strong">An excellent suggestion,</emphasis> Mister Bearington.
+    We really should ask the group to investigate the Black Marsh.
+  </prosody>
+
+
+  <p>Over the course of the game, be knighted as Sir Bearington.</p>
+  <p>Queen holds a dinner in my honor.</p>
+
+  <p>A guest becomes the first man to ever make a perception check that can beat my disguise.</p>
+  <p>Shouts out loud.</p>
+
+  <p>
+    <emphasis level="strong"><s>“Hey! That guy's not a guy! He's just a bear!”</s></emphasis>
+  </p>
+
+  <p>
+    <s>Man is escorted out of the castle while the guards apologize profusely for the indignity.</s>
+    <s>“We're so sorry, Sir Bearington.</s>
+    <s>Very sorry for this man’s behavior.”</s>
+  </p>
+
+  <p>
+    <prosody rate="x-slow" pitch="-2st" volume="x-loud"><phoneme alphabet="ipa" ph="ʀɑːːːːʁ">ROAR</phoneme></prosody>
+    <break time="500ms"/>
+    <emphasis level="moderate">shrug.</emphasis>
+  </p>
+</speak>

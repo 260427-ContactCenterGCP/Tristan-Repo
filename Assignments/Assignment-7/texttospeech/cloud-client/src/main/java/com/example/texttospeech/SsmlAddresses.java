@@ -62,19 +62,19 @@ public class SsmlAddresses {
       // Build the voice request, select the language code ("en-US") and
       // the ssml voice gender ("male")
       VoiceSelectionParams voice =
-          VoiceSelectionParams.newBuilder()
-              .setLanguageCode("en-US")
-              .setSsmlGender(SsmlVoiceGender.MALE)
-              .build();
+              VoiceSelectionParams.newBuilder()
+                      .setLanguageCode("en-US")
+                      .setSsmlGender(SsmlVoiceGender.MALE)
+                      .build();
 
       // Select the audio file type
       AudioConfig audioConfig =
-          AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
+              AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
 
       // Perform the text-to-speech request on the text input with the selected voice parameters and
       // audio file type
       SynthesizeSpeechResponse response =
-          textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
+              textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
 
       // Get the audio contents from the response
       ByteString audioContents = response.getAudioContent();
@@ -88,47 +88,13 @@ public class SsmlAddresses {
   }
   // [END tts_ssml_address_audio]
 
-  // [START tts_ssml_address_ssml]
-  /**
-   * Generates SSML text from plaintext.
-   *
-   * <p>Given an input filename, this function converts the contents of the input text file into a
-   * String of tagged SSML text. This function formats the SSML String so that, when synthesized,
-   * the synthetic audio will pause for two seconds between each line of the text file. This
-   * function also handles special text characters which might interfere with SSML commands.
-   *
-   * @param inputFile String name of plaintext file
-   * @return a String of SSML text based on plaintext input.
-   * @throws IOException on files that don't exist
-   */
-  public static String textToSsml(String inputFile) throws Exception {
-
-    // Read lines of input file
-    String rawLines = new String(Files.readAllBytes(Paths.get(inputFile)));
-
-    // Replace special characters with HTML Ampersand Character Codes
-    // These codes prevent the API from confusing text with SSML tags
-    // For example, '<' --> '&lt;' and '&' --> '&amp;'
-    String escapedLines = HtmlEscapers.htmlEscaper().escape(rawLines);
-
-    // Convert plaintext to SSML
-    // Tag SSML so that there is a 2 second pause between each address
-    String expandedNewline = escapedLines.replaceAll("\\n", "\n<break time='2s'/>");
-    String ssml = "<speak>" + expandedNewline + "</speak>";
-
-    // Return the concatenated String of SSML
-    return ssml;
-  }
-  // [END tts_ssml_address_ssml]
-
   // [START tts_ssml_address_test]
   public static void main(String... args) throws Exception {
     // test example address file
-    String inputFile = "resources/example.txt";
-    String outFile = "resources/example.mp3";
-
-    String ssml = textToSsml(inputFile);
-    ssmlToAudio(ssml, outFile);
+    String inputFile = "cloud-client/resources/example.ssml";
+    String outFile = "cloud-client/resources/example.mp3";
+    String ssmlText = new String(Files.readAllBytes(Paths.get(inputFile)));
+    ssmlToAudio(ssmlText, outFile);
   }
   // [END tts_ssml_address_test]
 }
